@@ -4,7 +4,9 @@
 <b>!!! NOTE - THIS CODE IS FOR EDUCATIONAL PURPOSE ONLY.(DON'T TRY IT WITHOUT KNOWLEDGE ABOUT THIS CODE)⚠️
 >AUTHORS WON'T BE RESPONSIBLE FOR ANY ILLIGAL ACTIVITY</b>
 1) Pre-requisites:
-Install Node.js (v14+ recommended) on your PC.
+
+>Install Node.js (v14+ recommended) on your PC.
+
 2) Create a new folder for your project and initialize:
 Open your terminal/command prompt:
 ``
@@ -12,17 +14,21 @@ mkdir keylogger
 cd keylogger
 npm init -y
 ```
+
 3) Install dependencies
 We'll use:
 
 iohook for global keyboard capturing
 no external encryption lib needed, Node.js's crypto is sufficient
 Install iohook:
+
 ```
 npm install iohook
 ```
+
 4) Create the main script: index.js
 >step - In your text editor (VS Code, Notepad++, etc.), create a new file called index.js and paste this:
+
 ```
 const iohook = require('iohook');
 const readline = require('readline');
@@ -110,11 +116,14 @@ function askQuestion(query) {
 
 })();
 ```
+
 5) Usage instructions:
 Run the script by typing in terminal:
+
 ```
 node index.js
 ```
+
 It will display a warning and prompt:
 Do you want to start capturing keyboard input? (yes/no):
 Type yes if you want to proceed.
@@ -128,6 +137,7 @@ On exit, your log file will be saved encrypted as keylog.enc in the same folder.
 
 6) To read the log file later
 Here's a simple decrypt script you can create as decrypt.js to decrypt and view logs:
+
 ```
 const crypto = require('crypto');
 const fs = require('fs');
@@ -165,10 +175,13 @@ rl.question('Enter password to decrypt log file: ', password => {
   rl.close();
 });
 ```
+
 Run it with:
+
 ```
 node decrypt.js
 ```
+
 Recap:
 You'll have two scripts: index.js (to record) and decrypt.js (to read).
 keylog.enc file stores encrypted logs.
@@ -178,4 +191,4 @@ This script uses native Node.js modules and a popular native keylogger iohook.
 You might need to build iohook binaries on some platforms, Replit and some environments may not support it well. Preferred to run locally on your PC.
 You must run this script with admin privileges on some systems for global keyboard capture.
 
-AGAIN TRY AT YOUR OWN RISK☠.
+AGAIN NOT RECOMENDED TO USE WITHOUT PC OWNER'S PERMISSION.
