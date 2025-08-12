@@ -18,6 +18,7 @@ Install iohook:
 npm install iohook
 ```
 4) Create the main script: index.js
+step - In your text editor (VS Code, Notepad++, etc.), create a new file called index.js and paste this:
 ```
 const iohook = require('iohook');
 const readline = require('readline');
@@ -105,3 +106,70 @@ function askQuestion(query) {
 
 })();
 ```
+5) Usage instructions:
+Run the script by typing in terminal:
+```
+node index.js
+```
+It will display a warning and prompt:
+Do you want to start capturing keyboard input? (yes/no):
+Type yes if you want to proceed.
+
+It will ask for a password to protect the log file.
+Enter any password you want.
+
+After that, all your key presses will be recorded until you press Ctrl+C to stop.
+
+On exit, your log file will be saved encrypted as keylog.enc in the same folder.
+
+6) To read the log file later
+Here's a simple decrypt script you can create as decrypt.js to decrypt and view logs:
+```
+const crypto = require('crypto');
+const fs = require('fs');
+const path = require('path');
+
+const LOG_FILE = path.join(__dirname, 'keylog.enc');
+const ALGORITHM = 'aes-256-cbc';
+
+function decrypt(encryptedText, password) {
+  const [ivHex, encryptedData] = encryptedText.split(':');
+  const iv = Buffer.from(ivHex, 'hex');
+  const key = crypto.scryptSync(password, 'salt', 32);
+  const decipher = crypto.createDecipheriv(ALGORITHM, key, iv);
+  let decrypted = decipher.update(encryptedData, 'hex', 'utf8');
+  decrypted += decipher.final('utf8');
+  return decrypted;
+}
+
+const readline = require('readline');
+const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+
+rl.question('Enter password to decrypt log file: ', password => {
+  if (!fs.existsSync(LOG_FILE)) {
+    console.error('Log file not found!');
+    process.exit(1);
+  }
+  const encryptedContent = fs.readFileSync(LOG_FILE, 'utf8');
+  try {
+    const decrypted = decrypt(encryptedContent, password);
+    console.log('\n--- Decrypted Logs ---\n');
+    console.log(decrypted);
+  } catch (err) {
+    console.error('Failed to decrypt file. Wrong password or corrupted file.');
+  }
+  rl.close();
+});
+```
+Run it with:
+```
+node decrypt.js
+```
+Recap:
+You'll have two scripts: index.js (to record) and decrypt.js (to read).
+keylog.enc file stores encrypted logs.
+Password you provide protects your data.
+Notes:
+This script uses native Node.js modules and a popular native keylogger iohook.
+You might need to build iohook binaries on some platforms, Replit and some environments may not support it well. Preferred to run locally on your PC.
+You must run this script with admin privileges on some systems for global keyboard capture.
