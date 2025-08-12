@@ -1,5 +1,5 @@
 📜 EDUCATIONAL & RESEARCH USE ONLY LICENSE
-Copyright (c) 2025 [Your Name]
+>Copyright (c) 2025 [Binary-Quest]
 
 🚨 WARNING — READ THIS BEFORE USING 🚨
 This software is a demonstration / educational example intended ONLY for:
