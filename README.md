@@ -1,4 +1,6 @@
 # keyLOG
+<b>!!! NOTE - THIS CODE IS FOR EDUCATIONAL PURPOSE ONLY.(DON'T TRY IT WITHOUT KNOWLEDGE ABOUT THIS CODE)
+>AUTHORS WON'T BE RESPONSIBLE FOR ANY ILLIGAL ACTIVITY</b>
 1) Pre-requisites:
 Install Node.js (v14+ recommended) on your PC.
 2) Create a new folder for your project and initialize:
