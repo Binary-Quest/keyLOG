@@ -186,11 +186,17 @@ node decrypt.js
 
 Recap:
 You'll have two scripts: index.js (to record) and decrypt.js (to read).
+
 keylog.enc file stores encrypted logs.
+
 Password you provide protects your data.
+
 Notes:
+
 This script uses native Node.js modules and a popular native keylogger iohook.
+
 You might need to build iohook binaries on some platforms, Replit and some environments may not support it well. Preferred to run locally on your PC.
+
 You must run this script with admin privileges on some systems for global keyboard capture.
 
-AGAIN NOT RECOMENDED TO USE WITHOUT PC OWNER'S PERMISSION.
+>AGAIN NOT RECOMENDED TO USE WITHOUT PC OWNER'S PERMISSION.
