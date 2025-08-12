@@ -11,7 +11,7 @@
 Open your terminal/command prompt:
 
 
-``
+```
 mkdir keylogger
 cd keylogger
 npm init -y
