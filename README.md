@@ -9,6 +9,8 @@
 
 2) Create a new folder for your project and initialize:
 Open your terminal/command prompt:
+
+
 ``
 mkdir keylogger
 cd keylogger
